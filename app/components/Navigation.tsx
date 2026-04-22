@@ -1,8 +1,9 @@
 import React from "react";
+import { Modes } from "./Modes";
 
 export const Navigation = () => {
   return (
-    <div className='w-full h-15 justify-between px-4 flex flex-row items-center'>
+    <div className='w-full h-15 justify-between px-20 flex flex-row items-center'>
       <svg
         width='93'
         height='20'
@@ -45,6 +46,7 @@ export const Navigation = () => {
           type='text'
         />
       </div>
+      <Modes />
     </div>
   );
 };
