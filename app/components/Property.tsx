@@ -4,12 +4,12 @@ import { MovieSummary } from "../type";
 export const Property = ({ card }: { card: MovieSummary }) => {
   return (
     <div className='flex overflow-x-auto snap-x snap-mandatory h-150'>
-      <div className='snap-start shrink-0 w-full h-150 flex-col items-start px-35 '>
-        <p className='py-[178px] font-normal text-[14px] text-white'>
+      <div className='snap-start shrink-0 w-full h-150 flex-col items-start px-35 absolute '>
+        <p className='py-[178px] font-normal text-[14px] text-white relative'>
           Now Playing:
         </p>
-        <p></p>
-        <div className='flex gap-1 items-center'>
+        <p className='relative'></p>
+        <div className='flex gap-1 items-center relative'>
           <svg
             width='16'
             height='16'
@@ -25,12 +25,12 @@ export const Property = ({ card }: { card: MovieSummary }) => {
               stroke-linejoin='round'
             />
           </svg>
-          <p> /10</p>
+          <p className='relative'> /10</p>
         </div>
         <p className='text-3 text-white w-[302px] h-20 font-normal my-4'>
           {card.overview}
         </p>
-        <button className='w-[145px] h-10 flex items-center justify-center gap-2 rounded-md'>
+        <button className='w-[145px] h-10 flex items-center justify-center gap-2 rounded-md relative'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             width='11'
@@ -45,11 +45,11 @@ export const Property = ({ card }: { card: MovieSummary }) => {
               stroke-linejoin='round'
             />
           </svg>
-          <p className='font-semibold text-[14px] text-black '>
-            {" "}
+          <p className='font-semibold text-[14px] text-black relative '>
             Watch Trailer
           </p>
         </button>
+        <div className='w-2 h-2 rounded-full bg-[#FFF] hover: bg-gray-50 '></div>
       </div>
     </div>
   );
