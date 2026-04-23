@@ -23,7 +23,7 @@ export const Moviecards = ({ card }: { card: MovieSummary }) => {
           </svg>
           <p>{card.vote_average} /10</p>
         </div>
-        <p className='font-normal text-[18px] text-black'></p>
+        <p className='font-normal text-[18px] text-black'>{card.title}</p>
       </div>
     </div>
   );

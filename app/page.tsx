@@ -17,7 +17,7 @@ export default function Home() {
     setMovies(res.data.results);
   });
   return (
-    <div className='w-full h-screen'>
+    <div className='container  '>
       {/* export const img = (path: string | null, size: "w185" | "w342" | "w500" | "original" = "w500") =>
   path ? `https://image.tmdb.org/t/p/${size}${path}` : "/placeholder.png"; */}
       <Navigation />
