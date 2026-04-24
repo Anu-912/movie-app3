@@ -2,24 +2,29 @@
 import Image from "next/image";
 import { Footer } from "./components/Footer";
 import { Navigation } from "./components/Navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MovieSummary } from "./type";
 import axios from "axios";
 import { myAxios } from "./axios";
 import { Moviecards } from "./components/Moviecards";
 import { Property } from "./components/Property";
+import { Popular } from "./components/Popular";
+import { Toprated } from "./components/Toprated";
+import { Upcoming } from "./components/Upcoming";
 
 export default function Home() {
   const API_KEY = "92660a80c8956c064b877d86ef45beac";
   const [movies, setMovies] = useState<MovieSummary[]>([]);
+  useEffect(() => {
+    myAxios
+      .get("/movie/upcoming?api_key=92660a80c8956c064b877d86ef45beac")
+      .then((res) => {
+        setMovies(res.data.results);
+      });
+  }, []);
 
-  myAxios.get("	/movie/upcoming?api_key=${API_KEY}").then((res) => {
-    setMovies(res.data.results);
-  });
   return (
     <div className='container  '>
-      {/* export const img = (path: string | null, size: "w185" | "w342" | "w500" | "original" = "w500") =>
-  path ? `https://image.tmdb.org/t/p/${size}${path}` : "/placeholder.png"; */}
       <Navigation />
       {movies.map((card) => (
         <Property
@@ -27,15 +32,15 @@ export default function Home() {
           key={card.id}
         />
       ))}
+      <p className='text-6 font-bold text-black'>Upcoming</p>
 
-      <div className='px-20 grid grid-cols-5 grid-rows-2 my-20 space-x-2'>
-        {movies.map((card) => (
-          <Moviecards
-            card={card}
-            key={card.id}
-          />
-        ))}
-      </div>
+      <Upcoming />
+      <p className='text-6 font-bold text-black'>Popular</p>
+
+      <Popular />
+      <p className='text-6 font-bold text-black'>Top rated</p>
+
+      <Toprated />
 
       <Footer />
     </div>

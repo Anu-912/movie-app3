@@ -26,3 +26,59 @@ export type MovieListResponse = {
   total_pages: number;
   total_results: number;
 };
+export const img = (
+  path: string | null,
+  size: "w185" | "w342" | "w500" | "original" = "w500",
+) => (path ? `https://image.tmdb.org/t/p/${size}${path}` : "/placeholder.png");
+export type Paginated<T> = {
+  page: number;
+  results: T[];
+  total_pages: number;
+  total_results: number;
+};
+
+export type Genre = {
+  id: number;
+  name: string;
+};
+
+export interface MovieDetails extends Omit<MovieSummary, "genre_ids"> {
+  tagline: string;
+  runtime: number | null;
+  status: string;
+  genres: Genre[];
+}
+
+export type CastMember = {
+  id: number;
+  name: string;
+  character: string;
+  profile_path: string | null;
+  order: number;
+};
+
+export type CrewMember = {
+  id: number;
+  name: string;
+  job: string;
+  department: string;
+};
+
+export type Credits = {
+  id: number;
+  cast: CastMember[];
+  crew: CrewMember[];
+};
+
+export type Video = {
+  id: string;
+  site: "YouTube" | string;
+  key: string;
+  type: "Trailer" | "Teaser" | "Clip" | string;
+  official: boolean;
+};
+
+export type VideosResponse = {
+  id: number;
+  results: Video[];
+};
