@@ -24,21 +24,81 @@ export default function Home() {
   }, []);
 
   return (
-    <div className='container  '>
+    <div className="container  ">
       <Navigation />
-      {movies.map((card) => (
-        <Property
-          card={card}
-          key={card.id}
-        />
-      ))}
-      <p className='text-6 font-bold text-black'>Upcoming</p>
+
+      <Property />
+
+      <div className="flex justify-between">
+        <p className="text-6 font-bold text-black">Upcoming</p>
+        <button className="h-9 px-4 py-2 cursor-pointer hover:border-b-black border-0.5 border-solid">
+          <div className="flex items-center justify-center gap-2">
+            <p className="text-[14px] font-semibold ">See more</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+            >
+              <path
+                d="M3.33337 8.00016H12.6667M12.6667 8.00016L8.00004 3.3335M12.6667 8.00016L8.00004 12.6668"
+                stroke="#18181B"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+        </button>
+      </div>
 
       <Upcoming />
-      <p className='text-6 font-bold text-black'>Popular</p>
+      <div className="flex justify-between">
+        <p className="text-6 font-bold text-black">Popular</p>
+        <button className="h-9 px-4 py-2 cursor-pointer hover:border-b-black border-0.5 border-solid">
+          <div className="flex items-center justify-center gap-2">
+            <p className="text-[14px] font-semibold ">See more</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+            >
+              <path
+                d="M3.33337 8.00016H12.6667M12.6667 8.00016L8.00004 3.3335M12.6667 8.00016L8.00004 12.6668"
+                stroke="#18181B"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+        </button>
+      </div>
 
       <Popular />
-      <p className='text-6 font-bold text-black'>Top rated</p>
+      <div className="flex justify-between">
+        <p className="text-6 font-bold text-black">Top rated</p>
+        <button className="h-9 px-4 py-2 cursor-pointer hover:border-b-black border-0.5 border-solid">
+          <div className="flex items-center justify-center gap-2">
+            <p className="text-[14px] font-semibold ">See more</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+            >
+              <path
+                d="M3.33337 8.00016H12.6667M12.6667 8.00016L8.00004 3.3335M12.6667 8.00016L8.00004 12.6668"
+                stroke="#18181B"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+        </button>
+      </div>
 
       <Toprated />
 
