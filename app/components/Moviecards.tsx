@@ -5,13 +5,13 @@ import Image from "next/image";
 export const Moviecards = ({ card }: { card: MovieSummary }) => {
   return (
     <div>
-      <div className='w-[230px] h-[439px]  rounded-md flex-col  bg-[#F4F4F5]  mx-2 space-x-2  '>
+      <div className='  rounded-lg flex-col  bg-[#F4F4F5]  space-8 p-0 m-0  '>
         <Image
           src={img(card.poster_path)}
           alt={card.title}
-          width={185}
+          width={229}
           height={340}
-          className='cover '
+          className='cover  p-0 rounded-t-lg '
         />
         <div className='flex-col items-start bg-gray-50 space-x-1 space-y-1 rounded-b-md'>
           <div className='flex gap-1 items-center'>

@@ -15,7 +15,7 @@ export const Upcoming = () => {
   }, []);
   return (
     <div>
-      <div className='px-20 grid grid-cols-5 grid-rows-2 my-20 '>
+      <div className='grid grid-cols-5 grid-rows-2 space-x-8 '>
         {movies.map((card) => (
           <Moviecards
             card={card}
