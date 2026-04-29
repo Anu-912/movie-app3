@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-export const Pagination = () => {
+export const Pagination = ({
+  currentPage,
+  totalPages,
+  MOVIE_PER_PAGE,
+}: {
+  currentPage: number;
+  totalPages: number;
+  MOVIE_PER_PAGE: number;
+}) => {
+  useEffect(() => {}, []);
+  const [skip, setSkip] = useState(0);
   return (
     <div className='flex'>
-      <button className='h-10 px-2 py-4 flex items-center'>
+      <button
+        disabled={currentPage === 1}
+        onClick={() => {
+          setSkip(currentPage - 1);
+        }}
+        className='h-10 px-2 py-4 flex items-center'
+      >
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='16'
@@ -20,7 +36,9 @@ export const Pagination = () => {
         </svg>
         <p className='text-[14px] font-semibold'>Previous</p>
       </button>
-      <button></button>
+      <button className='h-10 w-10 rounded-md border-[1px] border-solid border-[#E4E4E7] flex items-center justify-center'>
+        <p className='text-[14px] font-semibold text-black'>{}</p>
+      </button>
       <button className='h-10 px-2 py-4 flex items-center'>
         <p className='text-[14px] font-semibold'>Next</p>
         <svg

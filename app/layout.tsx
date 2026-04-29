@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "next-theme";
 
 const inter = Inter({
   variable: "--font-inter-sans",
@@ -18,11 +19,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
+    <head
       lang='en'
       // className={`${geist.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className='min-h-full flex flex-col'>{children}</body>
-    </html>
+      <body className='min-h-full flex flex-col'>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
+    </head>
   );
 }

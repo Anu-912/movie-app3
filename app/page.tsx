@@ -19,27 +19,19 @@ export default function Home() {
   const [movies, setMovies] = useState<MovieSummary[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    myAxios
-      .get("/movie/upcoming?api_key=92660a80c8956c064b877d86ef45beac")
-      .then((res) => {
-        setMovies(res.data.results);
-      });
-  }, []);
-  // if (loading) return ()
   return (
     <div className='container  '>
       <Navigation />
 
       <Property />
 
-      <div className='flex justify-between'>
-        <p className='text-6 font-bold text-black'>Upcoming</p>
-        <button className='h-9 px-4 py-2 cursor-pointer hover: border-b-black border-0.5 border-solid'>
-          <Link
-            href='/'
-            className='flex items-center justify-center gap-2'
-          >
+      <div className='flex justify-between mt-3 mb-3'>
+        <p className='text-6 font-bold text-black '>Upcoming</p>
+        <Link
+          href='/'
+          className='h-9 px-4 py-1 cursor-pointer  hover:border-b-2 border-b-black border-solid '
+        >
+          <div className='flex items-center justify-center gap-2'>
             <p className='text-[14px] font-semibold '>See more</p>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -55,18 +47,18 @@ export default function Home() {
                 strokeLinejoin='round'
               />
             </svg>
-          </Link>
-        </button>
+          </div>
+        </Link>
       </div>
 
       <Upcoming />
-      <div className='flex justify-between'>
-        <p className='text-6 font-bold text-black'>Popular</p>
-        <button className='h-9 w-30 px-4 py-2 cursor-pointer hover:border-b-black border-0.5 border-solid'>
-          <Link
-            href=''
-            className='flex items-center justify-center gap-2'
-          >
+      <div className='flex justify-between mt-3 mb-3'>
+        <p className='text-6 font-bold text-black '>Popular</p>
+        <Link
+          href='/'
+          className='h-9 px-4 py-1 cursor-pointer  hover:border-b-2 border-b-black border-solid '
+        >
+          <div className='flex items-center justify-center gap-2'>
             <p className='text-[14px] font-semibold '>See more</p>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -82,18 +74,18 @@ export default function Home() {
                 strokeLinejoin='round'
               />
             </svg>
-          </Link>
-        </button>
+          </div>
+        </Link>
       </div>
 
       <Popular />
-      <div className='flex justify-between'>
-        <p className='text-6 font-bold text-black'>Top rated</p>
-        <button className='h-9 px-4 py-2 cursor-pointer hover:border-b-black border-0.5 border-solid'>
-          <Link
-            href=''
-            className='flex items-center justify-center gap-2'
-          >
+      <div className='flex justify-between mt-3 mb-3'>
+        <p className='text-6 font-bold text-black '>Top rated</p>
+        <Link
+          href='/'
+          className='h-9 px-4 py-1 cursor-pointer  hover:border-b-2 border-b-black border-solid '
+        >
+          <div className='flex items-center justify-center gap-2'>
             <p className='text-[14px] font-semibold '>See more</p>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -109,10 +101,9 @@ export default function Home() {
                 strokeLinejoin='round'
               />
             </svg>
-          </Link>
-        </button>
+          </div>
+        </Link>
       </div>
-
       <Toprated />
 
       <Footer />

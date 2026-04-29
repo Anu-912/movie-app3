@@ -4,13 +4,14 @@ import { myAxios } from "../axios";
 import { Moviecards } from "./Moviecards";
 
 export const Upcoming = () => {
-  const API_KEY = "92660a80c8956c064b877d86ef45beac";
   const [movies, setMovies] = useState<MovieSummary[]>([]);
   useEffect(() => {
     myAxios
-      .get("/movie/upcoming?api_key=92660a80c8956c064b877d86ef45beac")
+      .get("/movie/upcoming?api_key=92660a80c8956c064b877d86ef45beac", {
+        params: { page: 1 },
+      })
       .then((res) => {
-        setMovies(res.data.results);
+        setMovies(res.data.results.slice(0, 10));
       });
   }, []);
   return (
