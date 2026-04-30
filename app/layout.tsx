@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "next-theme";
+import { ThemeProvider } from "next-themes";
+import { Navigation } from "./components/Navigation";
 
 const inter = Inter({
   variable: "--font-inter-sans",
@@ -19,13 +20,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <head
+    <html
       lang='en'
-      // className={`${geist.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} bg-white`}
     >
-      <body className='min-h-full flex flex-col'>
-        <ThemeProvider>{children}</ThemeProvider>
+      <body>
+        <ThemeProvider
+          enableSystem={false}
+          defaultTheme='light'
+          attribute='class'
+        >
+          {" "}
+          <Navigation />
+          <>{children}</>
+        </ThemeProvider>
       </body>
-    </head>
+    </html>
   );
 }

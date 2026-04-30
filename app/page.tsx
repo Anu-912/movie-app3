@@ -12,99 +12,68 @@ import { Popular } from "./components/Popular";
 import { Toprated } from "./components/Toprated";
 import { Upcoming } from "./components/Upcoming";
 import Link from "next/link";
-import { Page2 } from "./Page2";
+import { Moviesec } from "./components/Moviesec";
+import { tmdb } from "./tmdb";
 
 export default function Home() {
-  const API_KEY = "92660a80c8956c064b877d86ef45beac";
-  const [movies, setMovies] = useState<MovieSummary[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [upcomings, setUpcomings] = useState<MovieSummary[]>([]);
+  const [uLoading, setULoading] = useState(true);
+
+  const [popular, setPopular] = useState<MovieSummary[]>([]);
+  const [popLoading, setPopLoading] = useState(true);
+  const [toprated, setToprated] = useState<MovieSummary[]>([]);
+  const [topLoading, setTopLoading] = useState(true);
+  useEffect(() => {
+    myAxios
+      .get("/movie/upcoming?api_key=92660a80c8956c064b877d86ef45beac", {
+        params: { page: 1 },
+      })
+      .then((res) => {
+        setUpcomings(res.data.results.slice(0, 10));
+        setULoading(false);
+      });
+    myAxios
+      .get("/movie/popular?api_key=92660a80c8956c064b877d86ef45beac", {
+        params: { page: 1 },
+      })
+      .then((res) => {
+        setPopular(res.data.results.slice(0, 10));
+        setPopLoading(false);
+      });
+    myAxios
+      .get("/movie/top_rated?api_key=92660a80c8956c064b877d86ef45beac", {
+        params: { page: 1 },
+      })
+      .then((res) => {
+        setToprated(res.data.results.slice(0, 10));
+        setTopLoading(false);
+      });
+  }, []);
 
   return (
     <div className='container  '>
-      <Navigation />
+      {/* <Navigation /> */}
 
       <Property />
 
-      <div className='flex justify-between mt-3 mb-3'>
-        <p className='text-6 font-bold text-black '>Upcoming</p>
-        <Link
-          href='/'
-          className='h-9 px-4 py-1 cursor-pointer  hover:border-b-2 border-b-black border-solid '
-        >
-          <div className='flex items-center justify-center gap-2'>
-            <p className='text-[14px] font-semibold '>See more</p>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              width='16'
-              height='16'
-              viewBox='0 0 16 16'
-              fill='none'
-            >
-              <path
-                d='M3.33337 8.00016H12.6667M12.6667 8.00016L8.00004 3.3335M12.6667 8.00016L8.00004 12.6668'
-                stroke='#18181B'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-              />
-            </svg>
-          </div>
-        </Link>
-      </div>
-
-      <Upcoming />
-      <div className='flex justify-between mt-3 mb-3'>
-        <p className='text-6 font-bold text-black '>Popular</p>
-        <Link
-          href='/'
-          className='h-9 px-4 py-1 cursor-pointer  hover:border-b-2 border-b-black border-solid '
-        >
-          <div className='flex items-center justify-center gap-2'>
-            <p className='text-[14px] font-semibold '>See more</p>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              width='16'
-              height='16'
-              viewBox='0 0 16 16'
-              fill='none'
-            >
-              <path
-                d='M3.33337 8.00016H12.6667M12.6667 8.00016L8.00004 3.3335M12.6667 8.00016L8.00004 12.6668'
-                stroke='#18181B'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-              />
-            </svg>
-          </div>
-        </Link>
-      </div>
-
-      <Popular />
-      <div className='flex justify-between mt-3 mb-3'>
-        <p className='text-6 font-bold text-black '>Top rated</p>
-        <Link
-          href='/'
-          className='h-9 px-4 py-1 cursor-pointer  hover:border-b-2 border-b-black border-solid '
-        >
-          <div className='flex items-center justify-center gap-2'>
-            <p className='text-[14px] font-semibold '>See more</p>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              width='16'
-              height='16'
-              viewBox='0 0 16 16'
-              fill='none'
-            >
-              <path
-                d='M3.33337 8.00016H12.6667M12.6667 8.00016L8.00004 3.3335M12.6667 8.00016L8.00004 12.6668'
-                stroke='#18181B'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-              />
-            </svg>
-          </div>
-        </Link>
-      </div>
-      <Toprated />
+      <Moviesec
+        loading={uLoading}
+        movies={upcomings}
+        title='Upcomings'
+        link={"/movies/upcoming"}
+      />
+      <Moviesec
+        loading={popLoading}
+        movies={popular}
+        title='Popular'
+        link={"/movies/popular"}
+      />
+      <Moviesec
+        loading={topLoading}
+        movies={toprated}
+        title='Top rated'
+        link={"/movies/top_rated"}
+      />
 
       <Footer />
     </div>

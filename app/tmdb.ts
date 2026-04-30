@@ -6,3 +6,6 @@ export const tmdb = axios.create({
     api_key: process.env.NEXT_PUBLIC_API_KEY,
   },
 });
+const imgApi = axios.create({
+  baseURL: "https://image.tmdb.org/t/p",
+});
