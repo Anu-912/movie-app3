@@ -22,7 +22,7 @@ export const Moviesec = ({
           <h2 className='font-semibold text-2xl text-[#09090B]'>{title}</h2>
           <Link
             href={link}
-            className='py-2 px-4 flex items-center gap-2 text-[#09090B] text-sm font-medium hover:bg-gray-400'
+            className='py-2 px-4 flex items-center gap-2 text-[#09090B] text-sm font-medium hover: border-b-black border-b-2 border-solid'
           >
             See more{" "}
             <svg

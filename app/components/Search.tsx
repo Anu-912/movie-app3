@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { tmdb } from "../tmdb";
+import { myAxios } from "../axios";
 
 export const Search = () => {
   const [search, setSearch] = useState("");
   useEffect(() => {
-    tmdb.get("/search/movie").then((res) => {
-      setSearch(res.data);
-    });
+    myAxios
+      .get("/search/movie?api_key=92660a80c8956c064b877d86ef45beac")
+      .then((res) => {
+        setSearch(res.data.results);
+      });
   }, []);
   return (
     <div className='relative items-center flex '>

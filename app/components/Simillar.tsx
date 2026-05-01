@@ -1,21 +1,32 @@
-import React from "react";
-import { img, MovieSummary } from "../type";
-import Image from "next/image";
+"use client";
+import React, { useEffect, useState } from "react";
+import { MovieSummary } from "../type";
+import { myAxios } from "../axios";
 import Link from "next/link";
 
-export const Moviecards = ({ card }: { card: MovieSummary }) => {
+export const Simillar = ({ card }: { card: MovieSummary }) => {
+  const [movies, setMovies] = useState<MovieSummary[]>([]);
+  const [images, setImages] = useState("");
+  useEffect(() => {
+    myAxios
+      .get("/movie/${id}/similar?api_key=92660a80c8956c064b877d86ef45beac", {
+        params: { page: 1 },
+      })
+      .then((res) => {
+        setMovies(res.data.results.slice(0, 5));
+      });
+  }, []);
   return (
     <Link
-      href={"/movieDetail/" + card.id}
-      // href={`/movie/${card.id}`} "/product/" + product.id
+      href={`/movie/${card.id}`}
       className='block'
     >
       <img
-        className='aspect-230/340 w-full object-cover rounded-t-md hover:opacity-80 bg-black'
+        className='aspect-230/340 w-full object-cover'
         src={`https://images.tmdb.org/t/p/w300${card.poster_path}`}
         alt={card.title}
       />
-      <div className='p-2 bg-[#F4F4F5] rounded-b-md'>
+      <div className='p-2 bg-[#F4F4F5]'>
         <div className='flex items-center'>
           <svg
             width='16'
@@ -32,7 +43,7 @@ export const Moviecards = ({ card }: { card: MovieSummary }) => {
               strokeLinejoin='round'
             />
           </svg>
-          {card.vote_average.toFixed(1)}/10
+          {card.vote_average}/10
         </div>
         <div className='text-[#09090B] text-lg line-clamp-2 max-14 overflow-hidden'>
           {card.title}
